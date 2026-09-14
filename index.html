@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arç Blanc - Estètica i Benestar</title>
+  <!-- Google Fonts per a tipografia minimalista i elegant -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #faf9f6;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --text-muted: #666666;
+      --accent-color: #8b9b90; /* Verd saura suau */
+      --accent-soft: #e8ece9;
+      --font-title: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #eaeaea;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container img {
+      max-height: 60px;
+      width: auto;
+      display: block;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg-color) 100%);
+    }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* SECTION LAYOUT */
+    section {
+      padding: 60px 8%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--accent-color);
+      margin: 15px auto 0;
+    }
+
+    /* NOVEDAD / EXONOV & DESTACATS */
+    .highlight-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    .highlight-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 450px;
+    }
+
+    .highlight-content {
+      padding: 40px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-color);
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .highlight-content h3 {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .highlight-content ul {
+      list-style-type: square;
+      margin-left: 20px;
+      color: var(--text-muted);
+    }
+
+    /* GRID SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      border: 1px solid #f0f0f0;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+
+    .service-card ul {
+      list-style: none;
+    }
+
+    .service-card ul li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .service-card ul li:last-child {
+      border-bottom: none;
+    }
+
+    /* GALLERY / APARATOLOGIA */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card-bg);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-caption {
+      padding: 15px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* FOOTER / CONTACT */
+    footer {
+      background: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid #eaeaea;
+      margin-top: 60px;
+    }
+
+    .btn-contact {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-contact:hover {
+      background: #76867b;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .highlight-card {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-container">
+      <img src="images.jpg" alt="Arç Blanc Estètica i Benestar">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#novetats">Novetats</a></li>
+        <li><a href="#serveis">Serveis</a></li>
+        <li><a href="#aparatologia">Aparatologia</a></li>
+        <li><a href="#contacte">Cita prèvia</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Arç Blanc</h1>
+    <p>Estètica i Benestar</p>
+  </div>
+
+  <!-- SECCIÓ NOVETATS / TRACTAMENT EXONOV -->
+  <section id="novetats">
+    <h2 class="section-title">Tractaments Destacats</h2>
+    
+    <div class="highlight-card">
+      <img src="002027c6-d35e-43c7-8fda-285efacb7dcc.jpg" alt="Tractament Exonov Bright">
+      <div class="highlight-content">
+        <span class="tag">Nou Tractament</span>
+        <h3>Exonov Bright</h3>
+        <p><strong>Exosomes + Àcid Tranexàmic:</strong> La solució antimanques no fotosensibilitzant avançada.</p>
+        <br>
+        <ul>
+          <li><strong>Hidratació extra:</strong> Reforça la barrera cutània davant de la calor.</li>
+          <li><strong>Reparació del dany solar:</strong> Redueix l'estrès oxidatiu provocat pel sol.</li>
+          <li><strong>Recuperació post-sol:</strong> Accelera la cicatrització i calma la inflamació.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <img src="4b8f3235-fabb-41fe-b491-4a82fc8554fe.jpg" alt="Exonov Bright Solution">
+      <div class="highlight-content">
+        <span class="tag">Resultats Des de la Primera Sessió</span>
+        <h3>Biotecnologia Avançada</h3>
+        <p>Un tractament d'última generació ideal per cuidar la pell fins i tot a l'estiu, tractant taques i regenerant el teixit amb la màxima seguretat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓ SERVEIS -->
+  <section id="serveis">
+    <h2 class="section-title">Els Nostres Serveis</h2>
+    
+    <div class="services-grid">
+      
+      <div class="service-card">
+        <h3>Estètica de Mans i Peus</h3>
+        <ul>
+          <li>Manicura</li>
+          <li>Esmalt semipermanent</li>
+          <li>Pedicura</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <h3>Depilació</h3>
+        <ul>
+          <li>Depilació convencional</li>
+          <li>Depilació làser de díode d'alta potència</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <h3>Massatges</h3>
+        <ul>
+          <li>Massatges esportius</li>
+          <li>Cames cansades</li>
+          <li>Drenatge limfàtic</li>
+          <li>Descontracturants</li>
+          <li>Relaxants</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <h3>Tractaments Corporals</h3>
+        <ul>
+          <li>Peeling corporal</li>
+          <li>Hidratació corporal</li>
+          <li>Reafirmació i anti-cel·lulítics</li>
+          <li>Reductors</li>
+          <li>Recuperador del teixit i rehabilitació</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <h3>Tractaments Facials</h3>
+        <ul>
+          <li>Neteja de cutis</li>
+          <li>Hidratació profunda</li>
+          <li>Reafirmant i rejuveniment</li>
+          <li>Anti-arrugues</li>
+          <li>Anti-taques</li>
+          <li>Anti-acné</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓ APARATOLOGIA -->
+  <section id="aparatologia">
+    <h2 class="section-title">Aparatologia d'Última Generació</h2>
+    
+    <div class="gallery-grid">
+      
+      <div class="gallery-item">
+        <img src="c497df4a-253e-4592-be99-e574f2ac4752.jpg" alt="Làser de Díode BREsthetic">
+        <div class="gallery-caption">Depilació làser díode d'alta potència - Sense dolor</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="4c592d82-2d0c-4668-ba64-cb062f4029c0.jpg" alt="BREsthetic Làser">
+        <div class="gallery-caption">Resultats garantits en temps rècord</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="73834d19-e0ad-49a6-ad78-c8dc125fb4a6.jpg" alt="Equip Làser BREsthetic">
+        <div class="gallery-caption">Màxima seguretat europea</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="73834d19-e0ad-49a6-ad78-c8dc125fb4a6.jpg" style="display:none;"> <!-- Reservat -->
+      </div>
+
+    </div>
+
+    <div style="margin-top: 30px;" class="highlight-card">
+      <img src="73834d19-e0ad-49a6-ad78-c8dc125fb4a6.jpg" alt="Radiofreqüència Onix 4.4 Novasonix">
+      <div class="highlight-content">
+        <span class="tag">Radiofreqüència Avançada</span>
+        <h3>ONIX 4.4 by Novasonix</h3>
+        <p>Més que una radiofreqüència: potencia els beneficis i triplica els efectes biològics.</p>
+        <br>
+        <ul>
+          <li>Remodelació corporal</li>
+          <li>Regeneració facial</li>
+          <li>LED + RF 448 Khz</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="services-grid" style="margin-top: 30px;">
+      <div class="service-card">
+        <h3>Tots els equips d'Aparatologia:</h3>
+        <ul>
+          <li><strong>Radiofreqüència:</strong> Rejuveniment i fermesa facial/corporal.</li>
+          <li><strong>Endospheres Therapy:</strong> Tractament remodelant profund.</li>
+          <li><strong>Lipolàser:</strong> Reducció greixosa localitzada.</li>
+          <li><strong>Pressoteràpia:</strong> Drenatge i circulació.</li>
+          <li><strong>Rejuveniment facial làser:</strong> Estimulació de col·lagen.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER I CONTACTE -->
+  <footer id="contacte">
+    <h2 class="section-title" style="margin-bottom: 10px;">Demana la teva Cita</h2>
+    <p style="color: var(--text-muted);">Estem a la teva disposició per cuidar de tu.</p>
+    
+    <a href="https://wa.me/34XXXXXXXXX" class="btn-contact">Contacta per WhatsApp</a>
+
+    <p style="margin-top: 40px; font-size: 0.8rem; color: #999;">
+      &copy; 2026 Arç Blanc - Estètica i Benestar. Tots els drets reservats.
+    </p>
+  </footer>
+
+</body>
+</html>
