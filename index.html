@@ -50,9 +50,14 @@
     }
 
     .logo-container img {
-      max-height: 60px;
+      max-height: 110px; /* Logo més gran! */
       width: auto;
       display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.02);
     }
 
     nav ul {
@@ -251,19 +256,29 @@
 
     .btn-contact {
       display: inline-block;
-      background: var(--accent-color);
+      background: #25D366; /* Verd característic de WhatsApp */
       color: white;
-      padding: 12px 30px;
+      padding: 14px 32px;
       border-radius: 30px;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-weight: 500;
       letter-spacing: 1px;
       margin-top: 20px;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
     }
 
     .btn-contact:hover {
-      background: #76867b;
+      background: #20ba5a;
+      transform: translateY(-2px);
+    }
+
+    .phone-number {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-color);
     }
 
     /* RESPONSIVE DESIGN */
@@ -271,6 +286,9 @@
       header {
         flex-direction: column;
         gap: 15px;
+      }
+      .logo-container img {
+        max-height: 90px;
       }
       .highlight-card {
         grid-template-columns: 1fr;
@@ -421,7 +439,7 @@
       <div class="highlight-content">
         <span class="tag">Radiofreqüència Avançada</span>
         <h3>ONIX 4.4 by Novasonix</h3>
-        <p>Més que una radiofreqüència: potencia els beneficis i triplica els efectes biològics.</p>
+        <p>Més que una radiofreqüència: potencia els beneficits i triplica els efectes biològics.</p>
         <br>
         <ul>
           <li>Remodelació corporal</li>
@@ -450,7 +468,11 @@
     <h2 class="section-title" style="margin-bottom: 10px;">Demana la teva Cita</h2>
     <p style="color: var(--text-muted);">Estem a la teva disposició per cuidar de tu.</p>
     
-    <a href="https://wa.me/34XXXXXXXXX" class="btn-contact">Contacta per WhatsApp</a>
+    <div class="phone-number">📞 606 88 26 23</div>
+
+    <a href="https://wa.me/34606882623?text=Hola!%20M'agradaria%20demanar%20informaci%C3%B3%20o%20reserva%20de%20cita." target="_blank" class="btn-contact">
+      Contacta per WhatsApp
+    </a>
 
     <p style="margin-top: 40px; font-size: 0.8rem; color: #999;">
       &copy; 2026 Arç Blanc - Estètica i Benestar. Tots els drets reservats.
