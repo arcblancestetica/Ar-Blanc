@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -55,9 +56,7 @@ a {
   color: inherit;
 }
 
-/* =================================
-   CINEMÀTICA D'ENTRADA
-================================= */
+/* CINEMÀTICA D'ENTRADA */
 
 .intro-screen {
   position: fixed;
@@ -143,9 +142,7 @@ a {
   to { width: min(280px, 70vw); }
 }
 
-/* =================================
-   CAPÇALERA
-================================= */
+/* CAPÇALERA */
 
 header {
   position: sticky;
@@ -174,9 +171,7 @@ header {
   transform: scale(1.025);
 }
 
-/* =================================
-   BOTONS DE NAVEGACIÓ
-================================= */
+/* BOTONS DE NAVEGACIÓ */
 
 nav ul {
   display: flex;
@@ -226,9 +221,7 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* =================================
-   HERO
-================================= */
+/* HERO */
 
 .hero {
   max-width: 1450px;
@@ -291,9 +284,7 @@ button:focus-visible {
   transform: translateY(-3px);
 }
 
-/* =================================
-   CARRUSEL - IMATGES SENCERES
-================================= */
+/* CARRUSEL */
 
 .slider {
   position: relative;
@@ -357,9 +348,7 @@ button:focus-visible {
   background: var(--green-dark);
 }
 
-/* =================================
-   SECCIONS GENERALS
-================================= */
+/* SECCIONS GENERALS */
 
 section {
   max-width: 1250px;
@@ -390,9 +379,7 @@ section {
   font-size: .92rem;
 }
 
-/* =================================
-   PRESENTACIÓ
-================================= */
+/* PRESENTACIÓ */
 
 .intro {
   background: var(--white);
@@ -412,9 +399,7 @@ section {
   font-size: .96rem;
 }
 
-/* =================================
-   SERVEIS
-================================= */
+/* SERVEIS */
 
 .services-grid {
   display: grid;
@@ -482,9 +467,7 @@ section {
   font-size: .7rem;
 }
 
-/* =================================
-   APARATOLOGIA
-================================= */
+/* APARATOLOGIA */
 
 .aparatologia {
   background: var(--white);
@@ -542,9 +525,7 @@ section {
   font-size: .82rem;
 }
 
-/* =================================
-   CONTACTE
-================================= */
+/* CONTACTE */
 
 .contact {
   text-align: center;
@@ -618,9 +599,7 @@ section {
   color: white;
 }
 
-/* =================================
-   FOOTER
-================================= */
+/* FOOTER */
 
 footer {
   background: #fffefa;
@@ -650,9 +629,7 @@ footer {
   letter-spacing: .4px;
 }
 
-/* =================================
-   ANIMACIONS
-================================= */
+/* ANIMACIONS */
 
 @keyframes fadeUp {
   from {
@@ -676,9 +653,7 @@ footer {
   transform: translateY(0);
 }
 
-/* =================================
-   ACCESSIBILITAT
-================================= */
+/* ACCESSIBILITAT */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -697,9 +672,7 @@ footer {
   }
 }
 
-/* =================================
-   TAULETES
-================================= */
+/* TAULETES */
 
 @media (max-width: 950px) {
   header {
@@ -740,9 +713,7 @@ footer {
   }
 }
 
-/* =================================
-   MÒBILS
-================================= */
+/* MÒBILS */
 
 @media (max-width: 600px) {
   header {
@@ -869,7 +840,7 @@ footer {
 
     <a href="#inici" aria-label="Tornar a l'inici">
 
-      <img src="img/logo.jpg"
+      <img src="img/logo.png"
            alt="Arç Blanc Estètica i Benestar">
 
     </a>
@@ -1317,9 +1288,7 @@ footer {
 
 <script>
 
-/* =================================
-   CINEMÀTICA D'ENTRADA
-================================= */
+/* CINEMÀTICA D'ENTRADA */
 
 const introScreen = document.getElementById('introScreen');
 const skipIntro = document.getElementById('skipIntro');
@@ -1339,15 +1308,11 @@ function finishIntro() {
 
 skipIntro.addEventListener('click', finishIntro);
 
-// Durada de la presentació: 3,5 segons
-
 const introTimer = setTimeout(finishIntro, 3500);
 
 skipIntro.addEventListener('click', () => {
   clearTimeout(introTimer);
 });
-
-// Permetre entrar prement Escape
 
 document.addEventListener('keydown', (event) => {
 
@@ -1358,10 +1323,7 @@ document.addEventListener('keydown', (event) => {
 
 });
 
-
-/* =================================
-   CARRUSEL AUTOMÀTIC
-================================= */
+/* CARRUSEL AUTOMÀTIC */
 
 const slider = document.getElementById('slider');
 
@@ -1415,8 +1377,6 @@ function stopSlider() {
 
 }
 
-// Canvi manual de fotografia
-
 indicators.forEach((button, index) => {
 
   button.addEventListener('click', () => {
@@ -1429,19 +1389,13 @@ indicators.forEach((button, index) => {
 
 });
 
-// Pausar quan el cursor és a sobre
-
 slider.addEventListener('mouseenter', stopSlider);
 
 slider.addEventListener('mouseleave', startSlider);
 
-// Pausar quan el carrusel rep el focus
-
 slider.addEventListener('focusin', stopSlider);
 
 slider.addEventListener('focusout', startSlider);
-
-// Pausar quan la pàgina no està visible
 
 document.addEventListener('visibilitychange', () => {
 
@@ -1455,10 +1409,7 @@ document.addEventListener('visibilitychange', () => {
 
 startSlider();
 
-
-/* =================================
-   ANIMACIONS EN DESPLAÇAR-SE
-================================= */
+/* ANIMACIONS EN DESPLAÇAR-SE */
 
 const observer = new IntersectionObserver((entries) => {
 
