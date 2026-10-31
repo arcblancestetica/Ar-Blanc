@@ -8,6 +8,8 @@
 <title>Arç Blanc | Estètica i Benestar</title>
 <meta name="description" content="Arç Blanc Estètica i Benestar. Tractaments facials, corporals, massatges, depilació i aparatologia.">
 
+<meta name="theme-color" content="#f7f5ef">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,7 +37,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 120px;
+  scroll-padding-top: 180px;
 }
 
 body {
@@ -46,31 +48,125 @@ body {
   font-weight: 300;
 }
 
+body.loading {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
 }
 
-/* HEADER */
+/* =================================
+   CINEMÀTICA D'ENTRADA
+================================= */
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro-screen.finished {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-animation {
+  animation: introAppear 1.5s ease both;
+}
+
+.intro-name {
+  font-family: var(--title);
+  font-size: clamp(3rem, 9vw, 6rem);
+  font-weight: 400;
+  letter-spacing: 5px;
+  color: var(--green-dark);
+  line-height: 1.2;
+}
+
+.intro-line {
+  height: 1px;
+  width: 0;
+  background: var(--green);
+  margin: 25px auto;
+  animation: lineGrow 1s ease .6s forwards;
+}
+
+.intro-subtitle {
+  color: var(--muted);
+  font-size: .78rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation: fadeUp 1s ease .8s both;
+}
+
+.intro-skip {
+  position: absolute;
+  bottom: 35px;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 9px 22px;
+  border-radius: 30px;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: .72rem;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.intro-skip:hover {
+  background: var(--green-light);
+  color: var(--green-dark);
+}
+
+@keyframes introAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    letter-spacing: 12px;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 5px;
+  }
+}
+
+@keyframes lineGrow {
+  to { width: min(280px, 70vw); }
+}
+
+/* =================================
+   CAPÇALERA
+================================= */
 
 header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255,254,250,.96);
-  backdrop-filter: blur(12px);
+  background: rgba(255,254,250,.97);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
-  padding: 12px 6%;
+  padding: 8px 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  gap: 25px;
 }
 
 .logo-container img {
   display: block;
   width: auto;
-  height: 135px;
-  max-width: 360px;
+  height: 155px;
+  max-width: 390px;
   object-fit: contain;
   transition: transform .3s ease;
 }
@@ -79,37 +175,71 @@ header {
   transform: scale(1.025);
 }
 
+/* =================================
+   BOTONS DE NAVEGACIÓ
+================================= */
+
 nav ul {
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 28px;
+  justify-content: center;
+  gap: 19px;
 }
 
 nav a {
   text-decoration: none;
-  text-transform: uppercase;
-  font-size: .76rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 78px;
+  color: var(--green-dark);
+  font-size: .68rem;
   font-weight: 500;
-  letter-spacing: 1.3px;
-  transition: color .3s;
+  letter-spacing: .5px;
+  transition: .3s;
 }
 
-nav a:hover {
-  color: var(--green);
+.nav-icon {
+  width: 49px;
+  height: 49px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green-light);
+  border: 1px solid #dce5da;
+  font-size: 1.2rem;
+  transition: .3s;
 }
 
-/* HERO */
+nav a:hover .nav-icon,
+nav a:focus-visible .nav-icon {
+  background: var(--green-dark);
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 7px 18px rgba(70,95,73,.2);
+}
+
+nav a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 4px;
+}
+
+/* =================================
+   HERO
+================================= */
 
 .hero {
   max-width: 1450px;
   margin: auto;
-  padding: 65px 7% 80px;
+  padding: 75px 7% 85px;
   display: grid;
   grid-template-columns: .9fr 1.1fr;
   align-items: center;
   gap: 65px;
-  min-height: 570px;
+  min-height: 620px;
 }
 
 .hero-content {
@@ -162,14 +292,16 @@ nav a:hover {
   transform: translateY(-3px);
 }
 
-/* SLIDER */
+/* =================================
+   CARRUSEL - IMATGES SENCERES
+================================= */
 
 .slider {
   position: relative;
-  height: 430px;
+  height: 520px;
   overflow: hidden;
-  border-radius: 160px 12px 12px 12px;
-  background: var(--green-light);
+  border-radius: 130px 12px 12px 12px;
+  background: #eeece5;
   box-shadow: 0 15px 45px rgba(50,60,45,.09);
   animation: fadeUp 1.2s ease both;
 }
@@ -180,6 +312,10 @@ nav a:hover {
   opacity: 0;
   visibility: hidden;
   transition: opacity 1s ease, visibility 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
 }
 
 .slide.active {
@@ -191,12 +327,13 @@ nav a:hover {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .slider-indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 17px;
   left: 0;
   right: 0;
   display: flex;
@@ -210,7 +347,7 @@ nav a:hover {
   height: 9px;
   border: none;
   border-radius: 50%;
-  background: rgba(255,255,255,.65);
+  background: rgba(89,110,93,.45);
   cursor: pointer;
   transition: .3s;
 }
@@ -218,10 +355,12 @@ nav a:hover {
 .slider-indicators button.active {
   width: 25px;
   border-radius: 10px;
-  background: white;
+  background: var(--green-dark);
 }
 
-/* GENERAL SECTIONS */
+/* =================================
+   SECCIONS GENERALS
+================================= */
 
 section {
   max-width: 1250px;
@@ -252,13 +391,15 @@ section {
   font-size: .92rem;
 }
 
-/* INTRODUCTION */
+/* =================================
+   PRESENTACIÓ
+================================= */
 
 .intro {
   background: var(--white);
   max-width: none;
   text-align: center;
-  padding: 65px 10%;
+  padding: 75px 10%;
 }
 
 .intro-inner {
@@ -272,7 +413,9 @@ section {
   font-size: .96rem;
 }
 
-/* SERVICES */
+/* =================================
+   SERVEIS
+================================= */
 
 .services-grid {
   display: grid;
@@ -281,7 +424,6 @@ section {
 }
 
 .service-card {
-  position: relative;
   padding: 32px 35px;
   background: var(--white);
   border: 1px solid var(--border);
@@ -341,11 +483,14 @@ section {
   font-size: .7rem;
 }
 
-/* APARATOLOGIA */
+/* =================================
+   APARATOLOGIA
+================================= */
 
 .aparatologia {
   background: var(--white);
   max-width: none;
+  padding: 85px 7%;
 }
 
 .aparatologia-inner {
@@ -398,7 +543,9 @@ section {
   font-size: .82rem;
 }
 
-/* CONTACT */
+/* =================================
+   CONTACTE
+================================= */
 
 .contact {
   text-align: center;
@@ -472,7 +619,9 @@ section {
   color: white;
 }
 
-/* FOOTER */
+/* =================================
+   FOOTER
+================================= */
 
 footer {
   background: #fffefa;
@@ -483,8 +632,9 @@ footer {
 
 .footer-brand {
   font-family: var(--title);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin-bottom: 5px;
+  color: var(--green-dark);
 }
 
 .footer-owner {
@@ -501,7 +651,9 @@ footer {
   letter-spacing: .4px;
 }
 
-/* ANIMATIONS */
+/* =================================
+   ANIMACIONS
+================================= */
 
 @keyframes fadeUp {
   from {
@@ -525,7 +677,9 @@ footer {
   transform: translateY(0);
 }
 
-/* ACCESSIBILITY */
+/* =================================
+   ACCESSIBILITAT
+================================= */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -538,31 +692,31 @@ footer {
     opacity: 1;
     transform: none;
   }
+
+  .intro-screen {
+    display: none;
+  }
 }
 
-/* RESPONSIVE */
+/* =================================
+   TAULETES
+================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
   header {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     padding: 10px 4%;
   }
 
   .logo-container img {
-    height: 105px;
+    height: 125px;
     max-width: 90%;
     margin: auto;
   }
 
   nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  nav a {
-    font-size: .68rem;
+    gap: 16px;
   }
 
   .hero {
@@ -578,7 +732,7 @@ footer {
   }
 
   .slider {
-    height: 350px;
+    height: 480px;
     border-radius: 100px 10px 10px 10px;
   }
 
@@ -587,23 +741,34 @@ footer {
   }
 }
 
+/* =================================
+   MÒBILS
+================================= */
+
 @media (max-width: 600px) {
-  .services-grid,
-  .equipment-list {
-    grid-template-columns: 1fr;
+  header {
+    gap: 8px;
+    padding: 8px 3%;
   }
 
   .logo-container img {
-    height: 95px;
+    height: 105px;
+    max-width: 90%;
   }
 
   nav ul {
-    gap: 11px;
+    gap: 8px;
   }
 
   nav a {
-    font-size: .62rem;
-    letter-spacing: .7px;
+    min-width: 66px;
+    font-size: .59rem;
+  }
+
+  .nav-icon {
+    width: 43px;
+    height: 43px;
+    font-size: 1.05rem;
   }
 
   .hero {
@@ -615,8 +780,13 @@ footer {
   }
 
   .slider {
-    height: 290px;
+    height: 390px;
     border-radius: 75px 10px 10px 10px;
+  }
+
+  .services-grid,
+  .equipment-list {
+    grid-template-columns: 1fr;
   }
 
   .service-card {
@@ -630,41 +800,139 @@ footer {
   .contact {
     padding: 70px 6%;
   }
+
+  .intro {
+    padding: 60px 7%;
+  }
+
+  .aparatologia {
+    padding: 65px 6%;
+  }
+
+  .slide {
+    padding: 8px;
+  }
+}
+
+/* MÒBILS PETITS */
+
+@media (max-width: 380px) {
+  nav ul {
+    gap: 4px;
+  }
+
+  nav a {
+    min-width: 59px;
+    font-size: .54rem;
+  }
+
+  .nav-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .slider {
+    height: 330px;
+  }
 }
 </style>
 </head>
 
-<body>
+<body class="loading">
 
-<!-- HEADER -->
+<!-- CINEMÀTICA D'ENTRADA -->
+
+<div class="intro-screen" id="introScreen" aria-label="Benvinguts a Arç Blanc">
+
+  <div class="intro-animation">
+
+    <div class="intro-name">ARÇ BLANC</div>
+
+    <div class="intro-line"></div>
+
+    <div class="intro-subtitle">
+      Estètica · Benestar · Cura personal
+    </div>
+
+  </div>
+
+  <button class="intro-skip" id="skipIntro">
+    Entrar a la web →
+  </button>
+
+</div>
+
+<!-- CAPÇALERA -->
 
 <header>
+
   <div class="logo-container">
+
     <a href="#inici" aria-label="Tornar a l'inici">
-      <img src="img/logo.jpg" alt="Arç Blanc Estètica i Benestar">
+
+      <img src="img/logo.jpg"
+           alt="Arç Blanc Estètica i Benestar">
+
     </a>
+
   </div>
 
   <nav aria-label="Navegació principal">
+
     <ul>
-      <li><a href="#inici">Inici</a></li>
-      <li><a href="#serveis">Serveis</a></li>
-      <li><a href="#aparatologia">Aparatologia</a></li>
-      <li><a href="#contacte">Contacte</a></li>
+
+      <li>
+        <a href="#inici">
+          <span class="nav-icon">⌂</span>
+          <span>Inici</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#serveis">
+          <span class="nav-icon">✧</span>
+          <span>Serveis</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#aparatologia">
+          <span class="nav-icon">◈</span>
+          <span>Aparatologia</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#contacte">
+          <span class="nav-icon">☎</span>
+          <span>Contacte</span>
+        </a>
+      </li>
+
     </ul>
+
   </nav>
+
 </header>
 
-<!-- INICI I PRESENTACIÓ -->
+<!-- CONTINGUT PRINCIPAL -->
 
 <main>
+
+<!-- INICI -->
 
 <div class="hero" id="inici">
 
   <div class="hero-content">
-    <div class="eyebrow">Benestar · Bellesa · Cura personal</div>
 
-    <h1>Benvinguts a<br><span>Arç Blanc</span></h1>
+    <div class="eyebrow">
+      Benestar · Bellesa · Cura personal
+    </div>
+
+    <h1>
+      Benvinguts a<br>
+      <span>Arç Blanc</span>
+    </h1>
 
     <p class="hero-description">
       Un espai dedicat a la bellesa, la cura personal i el benestar.
@@ -675,11 +943,14 @@ footer {
     <a href="#serveis" class="hero-button">
       DESCOBREIX ELS NOSTRES SERVEIS
     </a>
+
   </div>
 
   <!-- CARRUSEL AUTOMÀTIC -->
 
-  <div class="slider" id="slider" aria-label="Imatges dels nostres tractaments">
+  <div class="slider"
+       id="slider"
+       aria-label="Imatges dels nostres tractaments">
 
     <div class="slide active">
       <img src="img/002027c6-d35e-43c7-8fda-285efacb7dcc.jpg"
@@ -711,26 +982,38 @@ footer {
            alt="Radiofreqüència ONIX 4.4">
     </div>
 
-    <div class="slider-indicators" aria-label="Seleccionar fotografia">
-      <button class="active" aria-label="Fotografia 1" aria-current="true"></button>
+    <div class="slider-indicators"
+         aria-label="Seleccionar fotografia">
+
+      <button class="active"
+              aria-label="Fotografia 1"
+              aria-current="true"></button>
+
       <button aria-label="Fotografia 2"></button>
       <button aria-label="Fotografia 3"></button>
       <button aria-label="Fotografia 4"></button>
       <button aria-label="Fotografia 5"></button>
       <button aria-label="Fotografia 6"></button>
+
     </div>
 
   </div>
+
 </div>
 
 <!-- PRESENTACIÓ -->
 
 <div class="intro">
+
   <div class="intro-inner reveal">
 
-    <div class="eyebrow">Arç Blanc Estètica i Benestar</div>
+    <div class="eyebrow">
+      Arç Blanc Estètica i Benestar
+    </div>
 
-    <h2 class="section-title">El teu moment de benestar</h2>
+    <h2 class="section-title">
+      El teu moment de benestar
+    </h2>
 
     <p>
       A Arç Blanc trobaràs un espai on la bellesa i el benestar
@@ -740,6 +1023,7 @@ footer {
     </p>
 
   </div>
+
 </div>
 
 <!-- SERVEIS -->
@@ -747,38 +1031,55 @@ footer {
 <section id="serveis">
 
   <div class="section-heading reveal">
+
     <div class="eyebrow">Què t'oferim?</div>
-    <h2 class="section-title">Els nostres serveis</h2>
+
+    <h2 class="section-title">
+      Els nostres serveis
+    </h2>
+
     <p class="section-description">
       Descobreix tots els tractaments i serveis disponibles
       al nostre centre d'estètica.
     </p>
+
   </div>
 
   <div class="services-grid">
 
     <article class="service-card reveal">
+
       <div class="service-number">01</div>
+
       <h3>Estètica de Mans i Peus</h3>
+
       <ul>
         <li>Manicura</li>
         <li>Esmalt semipermanent</li>
         <li>Pedicura</li>
       </ul>
+
     </article>
 
     <article class="service-card reveal">
+
       <div class="service-number">02</div>
+
       <h3>Depilació</h3>
+
       <ul>
         <li>Depilació convencional</li>
         <li>Depilació làser de díode d'alta potència</li>
       </ul>
+
     </article>
 
     <article class="service-card reveal">
+
       <div class="service-number">03</div>
+
       <h3>Massatges</h3>
+
       <ul>
         <li>Massatges esportius</li>
         <li>Tractaments per a cames cansades</li>
@@ -786,11 +1087,15 @@ footer {
         <li>Massatges descontracturants</li>
         <li>Massatges relaxants</li>
       </ul>
+
     </article>
 
     <article class="service-card reveal">
+
       <div class="service-number">04</div>
+
       <h3>Tractaments Corporals</h3>
+
       <ul>
         <li>Peeling corporal</li>
         <li>Hidratació corporal</li>
@@ -798,11 +1103,15 @@ footer {
         <li>Tractaments reductors</li>
         <li>Recuperació del teixit i rehabilitació</li>
       </ul>
+
     </article>
 
     <article class="service-card reveal">
+
       <div class="service-number">05</div>
+
       <h3>Tractaments Facials</h3>
+
       <ul>
         <li>Neteja de cutis</li>
         <li>Hidratació profunda</li>
@@ -811,19 +1120,25 @@ footer {
         <li>Tractaments antitaques</li>
         <li>Tractaments antiacne</li>
       </ul>
+
     </article>
 
     <article class="service-card reveal">
+
       <div class="service-number">06</div>
+
       <h3>Tractaments Especialitzats</h3>
+
       <ul>
         <li>Exonov Bright</li>
         <li>Exosomes i àcid tranexàmic</li>
         <li>Tractaments de cura i regeneració cutània</li>
       </ul>
+
     </article>
 
   </div>
+
 </section>
 
 <!-- APARATOLOGIA -->
@@ -833,66 +1148,94 @@ footer {
   <div class="aparatologia-inner">
 
     <div class="section-heading reveal">
-      <div class="eyebrow">Tecnologia i innovació</div>
-      <h2 class="section-title">Aparatologia</h2>
+
+      <div class="eyebrow">
+        Tecnologia i innovació
+      </div>
+
+      <h2 class="section-title">
+        Aparatologia
+      </h2>
+
       <p class="section-description">
         Disposem de diferents equips d'aparatologia per
         complementar els nostres tractaments facials i corporals.
       </p>
+
     </div>
 
     <div class="equipment-list">
 
       <div class="equipment-item reveal">
+
         <div class="equipment-icon">✧</div>
+
         <div>
           <strong>Radiofreqüència ONIX 4.4</strong>
           <p>Tractaments facials i corporals amb radiofreqüència.</p>
         </div>
+
       </div>
 
       <div class="equipment-item reveal">
+
         <div class="equipment-icon">✧</div>
+
         <div>
           <strong>Endospheres Therapy</strong>
           <p>Tractament corporal remodelant.</p>
         </div>
+
       </div>
 
       <div class="equipment-item reveal">
+
         <div class="equipment-icon">✧</div>
+
         <div>
           <strong>Lipolàser</strong>
           <p>Tractament orientat al greix localitzat.</p>
         </div>
+
       </div>
 
       <div class="equipment-item reveal">
+
         <div class="equipment-icon">✧</div>
+
         <div>
           <strong>Pressoteràpia</strong>
           <p>Tractaments de drenatge i circulació.</p>
         </div>
+
       </div>
 
       <div class="equipment-item reveal">
+
         <div class="equipment-icon">✧</div>
+
         <div>
           <strong>Depilació làser de díode</strong>
           <p>Equip de depilació làser d'alta potència.</p>
         </div>
+
       </div>
 
       <div class="equipment-item reveal">
+
         <div class="equipment-icon">✧</div>
+
         <div>
           <strong>Rejoveniment facial làser</strong>
           <p>Tractaments estètics de rejoveniment facial.</p>
         </div>
+
       </div>
 
     </div>
+
   </div>
+
 </div>
 
 <!-- CONTACTE -->
@@ -901,9 +1244,13 @@ footer {
 
   <div class="contact-inner reveal">
 
-    <div class="eyebrow">Som aquí per ajudar-te</div>
+    <div class="eyebrow">
+      Som aquí per ajudar-te
+    </div>
 
-    <h2 class="section-title">Demana la teva cita</h2>
+    <h2 class="section-title">
+      Demana la teva cita
+    </h2>
 
     <p class="contact-description">
       Tens algun dubte o vols més informació sobre els nostres
@@ -928,22 +1275,27 @@ footer {
          target="_blank"
          rel="noopener noreferrer"
          class="btn-contact">
+
         Contacta per WhatsApp
+
       </a>
 
       <a href="tel:+34606882623"
          class="btn-contact btn-secondary">
+
         Truca'ns
+
       </a>
 
     </div>
 
   </div>
+
 </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- PEU DE PÀGINA -->
 
 <footer>
 
@@ -966,11 +1318,59 @@ footer {
 
 <script>
 
-// CARRUSEL AUTOMÀTIC
+/* =================================
+   CINEMÀTICA D'ENTRADA
+================================= */
+
+const introScreen = document.getElementById('introScreen');
+const skipIntro = document.getElementById('skipIntro');
+
+let introFinished = false;
+
+function finishIntro() {
+
+  if (introFinished) return;
+
+  introFinished = true;
+
+  introScreen.classList.add('finished');
+  document.body.classList.remove('loading');
+
+}
+
+skipIntro.addEventListener('click', finishIntro);
+
+// Durada de la presentació: 3,5 segons
+
+const introTimer = setTimeout(finishIntro, 3500);
+
+skipIntro.addEventListener('click', () => {
+  clearTimeout(introTimer);
+});
+
+// Permetre entrar prement Escape
+
+document.addEventListener('keydown', (event) => {
+
+  if (event.key === 'Escape' && !introFinished) {
+    clearTimeout(introTimer);
+    finishIntro();
+  }
+
+});
+
+
+/* =================================
+   CARRUSEL AUTOMÀTIC
+================================= */
 
 const slider = document.getElementById('slider');
+
 const slides = document.querySelectorAll('.slide');
-const indicators = document.querySelectorAll('.slider-indicators button');
+
+const indicators = document.querySelectorAll(
+  '.slider-indicators button'
+);
 
 let currentSlide = 0;
 let sliderInterval;
@@ -978,64 +1378,99 @@ let sliderInterval;
 function showSlide(index) {
 
   slides[currentSlide].classList.remove('active');
+
   indicators[currentSlide].classList.remove('active');
+
   indicators[currentSlide].removeAttribute('aria-current');
 
   currentSlide = index;
 
   slides[currentSlide].classList.add('active');
+
   indicators[currentSlide].classList.add('active');
-  indicators[currentSlide].setAttribute('aria-current', 'true');
+
+  indicators[currentSlide].setAttribute(
+    'aria-current',
+    'true'
+  );
+
 }
 
 function nextSlide() {
+
   showSlide((currentSlide + 1) % slides.length);
+
 }
 
 function startSlider() {
+
   clearInterval(sliderInterval);
+
   sliderInterval = setInterval(nextSlide, 5500);
+
+}
+
+function stopSlider() {
+
+  clearInterval(sliderInterval);
+
 }
 
 // Canvi manual de fotografia
 
 indicators.forEach((button, index) => {
+
   button.addEventListener('click', () => {
+
     showSlide(index);
+
     startSlider();
+
   });
+
 });
 
 // Pausar quan el cursor és a sobre
 
-slider.addEventListener('mouseenter', () => {
-  clearInterval(sliderInterval);
-});
+slider.addEventListener('mouseenter', stopSlider);
 
 slider.addEventListener('mouseleave', startSlider);
+
+// Pausar quan el carrusel rep el focus
+
+slider.addEventListener('focusin', stopSlider);
+
+slider.addEventListener('focusout', startSlider);
 
 // Pausar quan la pàgina no està visible
 
 document.addEventListener('visibilitychange', () => {
+
   if (document.hidden) {
-    clearInterval(sliderInterval);
+    stopSlider();
   } else {
     startSlider();
   }
+
 });
 
 startSlider();
 
 
-// ANIMACIONS EN DESPLAÇAR-SE
+/* =================================
+   ANIMACIONS EN DESPLAÇAR-SE
+================================= */
 
 const observer = new IntersectionObserver((entries) => {
 
   entries.forEach(entry => {
 
     if (entry.isIntersecting) {
+
       entry.target.classList.add('visible');
+
       observer.unobserve(entry.target);
+
     }
 
   });
@@ -1045,7 +1480,9 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll('.reveal').forEach(element => {
+
   observer.observe(element);
+
 });
 
 </script>
