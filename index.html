@@ -220,12 +220,12 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* HERO IMMERSIU I ADAPTAT */
+/* HERO IMMERSIU I AMPLI */
 
 .hero {
   position: relative;
   max-width: 100%;
-  min-height: calc(100vh - 170px);
+  min-height: 820px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -234,7 +234,7 @@ button:focus-visible {
 }
 
 .hero-content {
-  padding: 40px 8% 40px 10%;
+  padding: 50px 8% 50px 10%;
   z-index: 2;
   animation: fadeUp 1s ease both;
 }
@@ -285,12 +285,12 @@ button:focus-visible {
   transform: translateY(-3px);
 }
 
-/* CARRUSEL IMMERSIU SENCER (DRETA) */
+/* CARRUSEL SENCER AMB FUSIÓ */
 
 .slider {
   position: relative;
   width: 100%;
-  height: 680px;
+  height: 750px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -299,12 +299,12 @@ button:focus-visible {
   animation: fadeUp 1.2s ease both;
 }
 
-/* Degradat suau a l'esquerra per integrar-ho amb el fons */
+/* Degradat suau a l'esquerra per fusionar-ho amb el fons */
 .slider::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--bg) 0%, rgba(247, 245, 239, 0) 25%);
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(247, 245, 239, 0) 35%);
   z-index: 3;
   pointer-events: none;
 }
@@ -318,7 +318,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 40px 40px 20px;
+  padding: 40px 60px 50px 20px;
 }
 
 .slide.active {
@@ -334,12 +334,12 @@ button:focus-visible {
   display: block;
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 15px 30px rgba(50,60,45,0.08));
+  filter: drop-shadow(0 20px 40px rgba(50,60,45,0.08));
 }
 
 .slider-indicators {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   right: 50%;
   transform: translateX(50%);
   display: flex;
@@ -724,7 +724,7 @@ footer {
   }
 
   .slider {
-    height: 500px;
+    height: 520px;
   }
 
   .slider::before {
@@ -773,7 +773,7 @@ footer {
   }
 
   .slider {
-    height: 420px;
+    height: 450px;
   }
 
   .services-grid,
@@ -820,7 +820,7 @@ footer {
   }
 
   .slider {
-    height: 350px;
+    height: 380px;
   }
 }
 </style>
@@ -934,7 +934,7 @@ footer {
 
   </div>
 
-  <!-- CARRUSEL IMMERSIU (DRETA) -->
+  <!-- CARRUSEL SENCER AMB EFECTE FUSIÓ -->
 
   <div class="slider"
        id="slider"
@@ -1413,7 +1413,7 @@ slider.addEventListener('mouseleave', startSlider);
 
 slider.addEventListener('focusin', stopSlider);
 
-slider.addEventListener('focusout', stopSlider);
+slider.addEventListener('focusout', startSlider);
 
 document.addEventListener('visibilitychange', () => {
 
