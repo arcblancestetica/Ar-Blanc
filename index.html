@@ -220,21 +220,21 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* HERO IMMERSIU */
+/* HERO IMMERSIU I AMPLI */
 
 .hero {
   position: relative;
   max-width: 100%;
-  min-height: calc(100vh - 170px);
+  min-height: 820px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  overflow: hidden;
   background: var(--bg);
+  padding: 60px 0;
 }
 
 .hero-content {
-  padding: 75px 8% 75px 10%;
+  padding: 50px 8% 50px 10%;
   z-index: 2;
   animation: fadeUp 1s ease both;
 }
@@ -285,19 +285,21 @@ button:focus-visible {
   transform: translateY(-3px);
 }
 
-/* CARRUSEL IMMERSIU (DRETA SENCERA) */
+/* CARRUSEL SENCER AMB FUSIÓ */
 
 .slider {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 600px;
+  height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background: transparent;
   animation: fadeUp 1.2s ease both;
 }
 
-/* Degradat suau a l'esquerra per integrar-ho amb el fons */
+/* Degradat suau a l'esquerra per fusionar-ho amb el fons */
 .slider::before {
   content: '';
   position: absolute;
@@ -316,6 +318,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px 60px 50px 20px;
 }
 
 .slide.active {
@@ -324,17 +327,21 @@ button:focus-visible {
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  filter: drop-shadow(0 20px 40px rgba(50,60,45,0.08));
 }
 
 .slider-indicators {
   position: absolute;
-  bottom: 25px;
-  right: 50px;
+  bottom: 20px;
+  right: 50%;
+  transform: translateX(50%);
   display: flex;
   justify-content: center;
   gap: 9px;
@@ -703,10 +710,11 @@ footer {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
+    padding: 40px 0;
   }
 
   .hero-content {
-    padding: 55px 7%;
+    padding: 30px 7%;
     text-align: center;
   }
 
@@ -716,17 +724,11 @@ footer {
   }
 
   .slider {
-    height: 450px;
-    min-height: 450px;
+    height: 520px;
   }
 
   .slider::before {
     background: linear-gradient(180deg, var(--bg) 0%, rgba(247, 245, 239, 0) 25%);
-  }
-
-  .slider-indicators {
-    right: 0;
-    left: 0;
   }
 
   section {
@@ -763,7 +765,7 @@ footer {
   }
 
   .hero-content {
-    padding: 45px 6%;
+    padding: 20px 6%;
   }
 
   .hero h1 {
@@ -771,8 +773,7 @@ footer {
   }
 
   .slider {
-    height: 380px;
-    min-height: 380px;
+    height: 450px;
   }
 
   .services-grid,
@@ -799,10 +800,6 @@ footer {
   .aparatologia {
     padding: 65px 6%;
   }
-
-  .slide {
-    padding: 0;
-  }
 }
 
 /* MÒBILS PETITS */
@@ -823,8 +820,7 @@ footer {
   }
 
   .slider {
-    height: 320px;
-    min-height: 320px;
+    height: 380px;
   }
 }
 </style>
@@ -938,40 +934,80 @@ footer {
 
   </div>
 
-  <!-- CARRUSEL IMMERSIU (DRETA) -->
+  <!-- CARRUSEL SENCER AMB EFECTE FUSIÓ -->
 
   <div class="slider"
        id="slider"
        aria-label="Imatges dels nostres tractaments">
 
     <div class="slide active">
-      <img src="img/002027c6-d35e-43c7-8fda-285efacb7dcc.jpg"
-           alt="Tractament Exonov Bright">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37.jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 1">
     </div>
 
     <div class="slide">
-      <img src="img/4b8f3235-fabb-41fe-b491-4a82fc8554fe.jpg"
-           alt="Exonov Bright Solution">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (12).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 2">
     </div>
 
     <div class="slide">
-      <img src="img/c497df4a-253e-4592-be99-e574f2ac4752.jpg"
-           alt="Equip de depilació làser">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (11).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 3">
     </div>
 
     <div class="slide">
-      <img src="img/4c592d82-2d0c-4668-ba64-cb062f4029c0.jpg"
-           alt="Equip BREsthetic">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (10).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 4">
     </div>
 
     <div class="slide">
-      <img src="img/73834d19-e0ad-49a6-ad78-c8dc125fb4a6.jpg"
-           alt="Aparell de tractament làser">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (9).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 5">
     </div>
 
     <div class="slide">
-      <img src="img/4b64de46-e126-400b-bee3-ee5807bfcba8.jpg"
-           alt="Radiofreqüència ONIX 4.4">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (8).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 6">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (7).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 7">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (6).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 8">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (5).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 9">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (4).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 10">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (3).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 11">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (2).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 12">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.37 (1).jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 13">
+    </div>
+
+    <div class="slide">
+      <img src="img/WhatsApp Image 2026-11-02 at 18.35.36.jpeg"
+           alt="Arç Blanc Estètica i Benestar - Imatge 14">
     </div>
 
     <div class="slider-indicators"
@@ -986,6 +1022,14 @@ footer {
       <button aria-label="Fotografia 4"></button>
       <button aria-label="Fotografia 5"></button>
       <button aria-label="Fotografia 6"></button>
+      <button aria-label="Fotografia 7"></button>
+      <button aria-label="Fotografia 8"></button>
+      <button aria-label="Fotografia 9"></button>
+      <button aria-label="Fotografia 10"></button>
+      <button aria-label="Fotografia 11"></button>
+      <button aria-label="Fotografia 12"></button>
+      <button aria-label="Fotografia 13"></button>
+      <button aria-label="Fotografia 14"></button>
 
     </div>
 
@@ -1450,8 +1494,6 @@ const observer = new IntersectionObserver((entries) => {
 }, {
   threshold: 0.12
 });
-
-document.querySelectorAll('.reveal').equal = function() {}; // fallback
 
 document.querySelectorAll('.reveal').forEach(element => {
 
