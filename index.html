@@ -220,21 +220,21 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
-/* HERO SUPER AMPLI PER ALBERGAR CARTELLS GIGANTS SENCERS */
+/* HERO IMMERSIU I AMPLI */
 
 .hero {
   position: relative;
   max-width: 100%;
-  min-height: 940px;
+  min-height: 820px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   background: var(--bg);
-  padding: 80px 0;
+  padding: 60px 0;
 }
 
 .hero-content {
-  padding: 40px 8% 40px 10%;
+  padding: 50px 8% 50px 10%;
   z-index: 2;
   animation: fadeUp 1s ease both;
 }
@@ -285,12 +285,12 @@ button:focus-visible {
   transform: translateY(-3px);
 }
 
-/* CARRUSEL GIGANT AMB FUSIÓ SENSE RETALLS */
+/* CARRUSEL SENCER AMB FUSIÓ */
 
 .slider {
   position: relative;
   width: 100%;
-  height: 860px;
+  height: 750px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -299,7 +299,7 @@ button:focus-visible {
   animation: fadeUp 1.2s ease both;
 }
 
-/* Degradat suau lateral per fusionar-ho amb l'altra meitat */
+/* Degradat suau a l'esquerra per fusionar-ho amb el fons */
 .slider::before {
   content: '';
   position: absolute;
@@ -318,7 +318,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px 60px 30px 20px;
+  padding: 40px 60px 50px 20px;
 }
 
 .slide.active {
@@ -334,12 +334,12 @@ button:focus-visible {
   display: block;
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 20px 45px rgba(50,60,45,0.08));
+  filter: drop-shadow(0 20px 40px rgba(50,60,45,0.08));
 }
 
 .slider-indicators {
   position: absolute;
-  bottom: 25px;
+  bottom: 20px;
   right: 50%;
   transform: translateX(50%);
   display: flex;
@@ -395,14 +395,13 @@ section {
   font-size: .92rem;
 }
 
-/* PRESENTACIÓ (AMPLIADA PER EVITAR SUPERPOSICIONS) */
+/* PRESENTACIÓ */
 
 .intro {
   background: var(--white);
   max-width: none;
   text-align: center;
-  padding: 100px 10%;
-  border-top: 1px solid var(--border);
+  padding: 75px 10%;
 }
 
 .intro-inner {
@@ -725,7 +724,7 @@ footer {
   }
 
   .slider {
-    height: 580px;
+    height: 520px;
   }
 
   .slider::before {
@@ -774,7 +773,7 @@ footer {
   }
 
   .slider {
-    height: 480px;
+    height: 450px;
   }
 
   .services-grid,
@@ -795,7 +794,7 @@ footer {
   }
 
   .intro {
-    padding: 70px 7%;
+    padding: 60px 7%;
   }
 
   .aparatologia {
@@ -821,7 +820,7 @@ footer {
   }
 
   .slider {
-    height: 400px;
+    height: 380px;
   }
 }
 </style>
@@ -935,7 +934,7 @@ footer {
 
   </div>
 
-  <!-- CARRUSEL GIGANT SENCER AMB FUSIÓ -->
+  <!-- CARRUSEL SENCER AMB EFECTE FUSIÓ -->
 
   <div class="slider"
        id="slider"
@@ -1414,7 +1413,7 @@ slider.addEventListener('mouseleave', startSlider);
 
 slider.addEventListener('focusin', stopSlider);
 
-slider.addEventListener('focusout', stopSlider);
+slider.addEventListener('focusout', startSlider);
 
 document.addEventListener('visibilitychange', () => {
 
